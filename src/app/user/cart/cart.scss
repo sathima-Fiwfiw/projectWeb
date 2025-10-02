@@ -1,0 +1,183 @@
+/* --- Main Container & Box Styles --- */
+.cart-details-box {
+    // Background and spacing to match the main white box in the image
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Optional: subtle shadow */
+    max-width: 900px; /* Adjust based on your overall layout */
+    margin: 20px auto;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 0; // Remove default margin
+}
+
+/* --- Cart Item List Styles --- */
+.item-list {
+    margin: 0;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    // Divider line between items
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.cart-item:last-child {
+    border-bottom: none; // No border after the last item
+    padding-bottom: 0;
+}
+
+.item-image {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 25px;
+    border-radius: 2px;
+}
+
+.item-name-col {
+    flex-grow: 1; // Takes up available space
+    padding-right: 20px;
+}
+
+.item-name {
+    font-size: 16px;
+    color: #333;
+    display: block; // Ensures it takes up the full space
+}
+
+.item-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff0000; // RED price color
+    min-width: 80px; // Ensure prices align vertically
+    text-align: right;
+    margin-right: 15px;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: #888;
+    transition: color 0.2s;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    color: #333;
+}
+
+.trash-icon {
+    font-size: 18px;
+    line-height: 1; // Ensure trash icon is centered
+    display: block;
+}
+
+/* --- Summary & Discount Section --- */
+.summary-section {
+    padding-top: 25px;
+    margin-top: 25px;
+    border-top: 1px solid #f0f0f0; // Separator line above the discount box
+}
+
+.discount-input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.discount-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.discount-btn {
+    background-color: #ff0000; // RED button color
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    white-space: nowrap; // Prevent button text from wrapping
+}
+
+/* --- Totals Breakdown --- */
+.totals-breakdown {
+    padding: 10px 0;
+    max-width: 400px; /* Optional: Constrain the width for neatness */
+    margin-left: auto; /* Push breakdown to the right */
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+}
+
+.label {
+    color: #555;
+    font-size: 15px;
+}
+
+.value {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Discount row specific styling */
+.discount-row .value {
+    color: #ff0000; /* RED for the discount amount */
+    font-weight: bold;
+}
+
+/* Grand Total Row */
+.total-row.grand-total-row {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    align-items: center;
+}
+
+.label-final {
+    font-weight: bold;
+    font-size: 17px;
+    color: #333;
+}
+
+.value-final {
+    font-weight: bold;
+    font-size: 24px;
+    color: #ff0000; /* BOLD RED for the final price */
+    flex-grow: 1;
+    text-align: right;
+    padding-right: 20px; // Spacing before the button
+}
+
+.checkout-btn {
+    background-color: #ff0000; /* RED button color */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    white-space: nowrap;
+}

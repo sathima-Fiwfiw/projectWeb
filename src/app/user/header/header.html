@@ -1,15 +1,11 @@
 <mat-sidenav-container class="sidenav-container">
-
   <mat-sidenav #sidenav class="sidenav" mode="over">
-    <div class="sidebar-header">
-      GameShop
-    </div>
+    <div class="sidebar-header">GameShop</div>
     <mat-nav-list>
       <a mat-list-item href="#">หน้าแรก</a>
       <a mat-list-item href="#">ประเภทเกม</a>
       <a mat-list-item href="#">อันดับเกมขายดี</a>
-      <a mat-list-item href="#">กระเป๋าเงิน</a>
-      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/wallet">กระเป๋าเงิน</a>
       <a mat-list-item href="#">โปรไฟล์</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -25,19 +21,17 @@
 
       <mat-form-field class="search-form-field" appearance="outline">
         <mat-icon matPrefix>search</mat-icon>
-        <input matInput placeholder="Search...">
+        <input matInput placeholder="Search..." />
       </mat-form-field>
 
       <span class="spacer"></span>
 
-      <button mat-icon-button>
+      <button mat-icon-button routerLink="/cart">
         <mat-icon>shopping_cart</mat-icon>
       </button>
-      <button mat-icon-button>
+      <button mat-icon-button routerLink="/profileuser">
         <mat-icon>account_circle</mat-icon>
       </button>
     </mat-toolbar>
-
-    </mat-sidenav-content>
-
+  </mat-sidenav-content>
 </mat-sidenav-container>

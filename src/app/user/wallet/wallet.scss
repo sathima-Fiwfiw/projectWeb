@@ -1,0 +1,177 @@
+// /* Container หลัก */
+// .wallet-container {
+//   max-width: 450px;
+//   margin: 30px auto;
+//   padding: 20px;
+//   font-family: Arial, sans-serif;
+// }
+
+// /* ส่วนหัวข้อสีแดง */
+// .section-title-red {
+//   color: #e53935; /* แดงเข้ม */
+//   text-align: center;
+//   margin-bottom: 20px;
+//   font-size: 1.5rem;
+//   font-weight: bold;
+// }
+
+// /* เส้นแบ่งส่วน */
+// .divider {
+//   border: 0;
+//   height: 1px;
+//   background-color: transparent;
+//   margin: 20px 0;
+// }
+
+// /* -------------------- 1. ยอดเงินคงเหลือ -------------------- */
+// .balance-card {
+//   background-color: white;
+//   border: 1px solid #e53935; /* ขอบสีแดงตามภาพ */
+//   border-radius: 8px;
+//   padding: 15px;
+//   text-align: center;
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+// }
+
+// .balance-display {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 15px;
+// }
+
+// .wallet-icon {
+//   font-size: 2rem;
+//   color: #e53935;
+// }
+
+// .current-balance {
+//   font-size: 2rem;
+//   font-weight: bold;
+//   color: #333;
+// }
+
+
+// /* -------------------- 2. ส่วนเติมเงิน -------------------- */
+// .topup-box {
+//   background-color: white;
+//   border-radius: 8px;
+//   padding: 20px;
+//   text-align: center;
+//   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+// }
+
+// .predefined-amounts {
+//   display: flex;
+//   justify-content: center;
+//   gap: 10px;
+//   margin-bottom: 20px;
+// }
+
+// .amount-button {
+//   padding: 10px 15px;
+//   border: 1px solid #ccc;
+//   background-color: #f8f8f8;
+//   color: #333;
+//   cursor: pointer;
+//   border-radius: 5px;
+//   font-weight: bold;
+//   transition: all 0.2s;
+// }
+
+// .amount-button:hover {
+//   background-color: #eee;
+// }
+
+// .amount-button.selected {
+//   background-color: #e53935; /* สีแดงเมื่อถูกเลือก */
+//   color: white;
+//   border-color: #e53935;
+// }
+
+// .custom-amount-label {
+//   margin-top: 15px;
+//   margin-bottom: 5px;
+//   font-weight: 500;
+//   color: #555;
+// }
+
+// .custom-input {
+//   width: 80%;
+//   max-width: 200px;
+//   padding: 10px;
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+//   text-align: center;
+//   font-size: 1.1rem;
+//   margin-bottom: 20px;
+// }
+
+// .topup-button {
+//   padding: 10px 30px;
+//   background-color: #e53935; /* ปุ่มแดง */
+//   color: white;
+//   border: none;
+//   border-radius: 5px;
+//   font-size: 1.1rem;
+//   font-weight: bold;
+//   cursor: pointer;
+//   transition: background-color 0.2s;
+// }
+
+// .topup-button:hover:not([disabled]) {
+//   background-color: #c62828; /* แดงเข้มขึ้นเมื่อ hover */
+// }
+
+// .topup-button:disabled {
+//   background-color: #bdbdbd; /* สีเทาเมื่อ disabled */
+//   cursor: not-allowed;
+// }
+
+
+// /* -------------------- 3. ประวัติการทำรายการ -------------------- */
+// .history-list {
+//   background-color: white;
+//   padding: 15px;
+//   border-radius: 8px;
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+// }
+
+// .history-item {
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 8px 0;
+//   border-bottom: 1px solid #eee;
+// }
+
+// .history-item:last-child {
+//   border-bottom: none;
+// }
+
+// .history-date {
+//   flex-basis: 30%;
+//   color: #777;
+//   font-size: 0.9rem;
+// }
+
+// .history-type {
+//   flex-basis: 40%;
+//   text-align: left;
+// }
+
+// .history-amount {
+//   flex-basis: 30%;
+//   text-align: right;
+//   font-weight: bold;
+//   color: #333; /* ค่าใช้จ่าย/ถอน */
+// }
+
+// .history-amount.positive {
+//   color: #43a047; /* สีเขียวสำหรับเติมเงิน */
+// }
+
+// .no-history {
+//   text-align: center;
+//   color: #999;
+//   padding: 10px;
+// }

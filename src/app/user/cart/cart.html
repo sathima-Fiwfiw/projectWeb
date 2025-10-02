@@ -1,0 +1,51 @@
+<div class="cart-details-box">
+  <h2>รายการสินค้าของคุณ</h2>
+
+  <div class="item-list">
+    <div *ngFor="let item of cartItems; let i = index" class="cart-item">
+      <img [src]="item.imageUrl" [alt]="item.name" class="item-image" />
+
+      <div class="item-name-col">
+        <span class="item-name">{{ item.name }}</span>
+      </div>
+
+      <span class="item-price">฿ {{ item.price | number : "1.0-2" }}</span>
+
+      <button class="delete-btn" (click)="removeItem(item.id)">
+        <span class="trash-icon">🗑️</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="summary-section">
+    <div class="discount-input-row">
+      <input
+        type="text"
+        placeholder="กรอกรหัสส่วนลด"
+        [(ngModel)]="discountCode"
+        class="discount-input"
+      />
+      <button (click)="applyDiscount()" class="discount-btn">ใช้โค้ด</button>
+    </div>
+
+    <div class="totals-breakdown">
+      <div class="total-row">
+        <span class="label">ราคารวม</span>
+        <span class="value">฿ {{ subtotal | number : "1.0-2" }}</span>
+      </div>
+
+      <div class="total-row discount-row">
+        <span class="label">ส่วนลด</span>
+        <span class="value discount-value"
+          >- ฿ {{ discountAmount | number : "1.0-2" }}</span
+        >
+      </div>
+
+      <div class="total-row grand-total-row">
+        <span class="label-final">ราคาสินค้าทั้งหมด</span>
+        <span class="value-final">฿ {{ total | number : "1.0-2" }}</span>
+        <button (click)="checkout()" class="checkout-btn">ชำระเงิน</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="wallet-container">
+  <div class="balance-section">
+    <h2 class="section-title-red">ยอดเงินคงเหลือ</h2>
+    <div class="balance-card">
+      <div class="balance-display">
+        <span class="wallet-icon">💳</span>
+        <span class="current-balance">{{ currentBalance | number }}</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="topup-section">
+    <h2 class="section-title-red">เติมเงิน</h2>
+
+    <div class="topup-box">
+      <div class="predefined-amounts">
+        <button
+          *ngFor="let amount of predefinedAmounts"
+          class="amount-button"
+          [class.selected]="selectedAmount === amount"
+          (click)="selectAmount(amount)"
+        >
+          {{ amount | number }} ฿
+        </button>
+      </div>
+
+      <div class="custom-amount">
+        <p class="custom-amount-label">ระบุจำนวนเงิน</p>
+        <input
+          type="number"
+          class="custom-input"
+          placeholder="100"
+          [(ngModel)]="customAmount"
+          (ngModelChange)="clearSelection()"
+          min="100"
+        />
+      </div>
+
+      <button
+        class="topup-button"
+        (click)="confirmTopUp()"
+        [disabled]="!isTopUpAmountValid()"
+      >
+        เติมเงิน
+      </button>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="history-section">
+    <h2 class="section-title-red">ประวัติการทำรายการ</h2>
+    <div class="history-list">
+      <div *ngFor="let transaction of transactionHistory" class="history-item">
+        <span class="history-date">{{ transaction.date }}</span>
+        <span class="history-type">{{ transaction.type }}</span>
+        <span class="history-amount" [class.positive]="transaction.amount > 0">
+          {{ transaction.amount > 0 ? "+" : ""
+          }}{{ transaction.amount | number }} ฿
+        </span>
+      </div>
+      <div *ngIf="transactionHistory.length === 0" class="no-history">
+        ยังไม่มีประวัติการทำรายการ
+      </div>
+    </div>
+  </div>
+</div>

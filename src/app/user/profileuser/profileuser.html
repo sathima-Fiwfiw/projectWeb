@@ -1,0 +1,77 @@
+<div class="profile-page-container">
+  <div class="profile-box">
+    <h3>ข้อมูลส่วนตัว</h3>
+
+    <div class="profile-content">
+      <div class="profile-image-section">
+        <img
+          [src]="userProfile.profileImageUrl"
+          alt="Profile Picture"
+          class="profile-image"
+        />
+      </div>
+
+      <div class="profile-data-section">
+        <div class="data-row">
+          <span class="label">ชื่อ :</span>
+          <input
+            type="text"
+            [(ngModel)]="tempProfile.firstName"
+            [disabled]="!isEditing"
+            class="data-input"
+          />
+        </div>
+
+        <div class="data-row">
+          <span class="label">นามสกุล :</span>
+          <input
+            type="text"
+            [(ngModel)]="tempProfile.lastName"
+            [disabled]="!isEditing"
+            class="data-input"
+          />
+        </div>
+
+        <div class="data-row">
+          <span class="label">ชื่อผู้ใช้ :</span>
+          <input
+            type="text"
+            [(ngModel)]="tempProfile.username"
+            [disabled]="!isEditing"
+            class="data-input"
+          />
+        </div>
+
+        <div class="data-row">
+          <span class="label">อีเมล :</span>
+          <input
+            type="email"
+            [(ngModel)]="tempProfile.email"
+            [disabled]="!isEditing"
+            class="data-input"
+          />
+        </div>
+
+        <div class="data-row">
+          <span class="label">เบอร์โทรศัพท์ :</span>
+          <input
+            type="text"
+            [(ngModel)]="tempProfile.phone"
+            [disabled]="!isEditing"
+            class="data-input"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="edit-button-container">
+      <button (click)="toggleEditMode()" class="edit-btn">
+        {{ isEditing ? "บันทึก" : "แก้ไข" }}
+      </button>
+    </div>
+  </div>
+
+  <div class="logout-container">
+    <button (click)="logout()" class="logout-btn">ออกจากระบบ</button>
+  </div>
+</div>
