@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { Header } from '../header/header';
 
 @Component({
   selector: 'app-detail',
-  imports: [],
+  imports: [Header],
   templateUrl: './detail.html',
   styleUrl: './detail.scss',
 })

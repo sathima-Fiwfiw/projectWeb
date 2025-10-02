@@ -41,3 +41,20 @@ mat-toolbar {
   font-size: 1.5rem;
 }
 
+.content-area {
+  background-color: #f4f4f8; /* สีพื้นหลังเทาอ่อน */
+  margin-top: 50px; /* เว้นระยะห่างจาก Toolbar */
+  display: flex;
+  justify-content: center; /* จัดให้อยู่กลางแนวนอน */
+  align-items: center;    /* จัดให้อยู่กลางแนวตั้ง */
+  padding: 24px;
+}
+
+.content-area {
+  background-color: #f4f4f8;
+  margin-top: 50px; /* เว้นระยะห่างจาก Toolbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}

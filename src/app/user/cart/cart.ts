@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Header } from '../header/header';
 
 interface CartItem {
   id: number;
@@ -11,7 +12,7 @@ interface CartItem {
 
 @Component({
   selector: 'app-cart',
-  imports: [CommonModule, FormsModule], // Assuming standalone: true or module imports are handled elsewhere if needed
+  imports: [CommonModule, FormsModule,Header], // Assuming standalone: true or module imports are handled elsewhere if needed
   templateUrl: './cart.html',
   styleUrl: './cart.scss',
 })

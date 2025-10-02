@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Header } from '../header/header';
 
 @Component({
   selector: 'app-profileuser',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Header],
   templateUrl: './profileuser.html',
   styleUrl: './profileuser.scss',
 })
