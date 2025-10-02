@@ -1,0 +1,45 @@
+<div class="signup-container">
+
+<button mat-button class="btn-back" (click)="goBack()">
+  <mat-icon>arrow_back</mat-icon> กลับ
+</button>
+
+  <div class="app-title">GameShop</div>
+
+  <mat-card class="signup-card">
+    <h2 class="card-title">สมัครสมาชิก</h2>
+
+    <div class="avatar-container">
+      <div class="avatar"></div>
+      <button mat-mini-fab color="warn" class="btn-add-avatar">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <form class="signup-form">
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-icon class="icon" matPrefix>person</mat-icon>
+        <input matInput placeholder="ชื่อผู้ใช้" autocomplete="off">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-icon class="icon" matPrefix>mail</mat-icon>
+        <input matInput placeholder="อีเมล" autocomplete="off">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-icon class="icon" matPrefix>visibility</mat-icon>
+        <input matInput type="password" placeholder="รหัสผ่าน" autocomplete="new-password">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-icon class="icon" matPrefix>visibility</mat-icon>
+        <input matInput type="password" placeholder="ยืนยันรหัสผ่าน" autocomplete="new-password">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="btn-submit">สมัครสมาชิก</button>
+
+    </form>
+  </mat-card>
+</div>

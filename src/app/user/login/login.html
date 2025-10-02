@@ -1,0 +1,39 @@
+<div class="main">
+  <div class="GameShop">GameShop</div>
+
+  <mat-card class="custom-card">
+    <mat-card-title class="login-title">เข้าสู่ระบบ</mat-card-title>
+    <mat-card-content>
+      <form>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-icon matPrefix class="icon">mail</mat-icon>
+          <input matInput placeholder="อีเมล" type="email" autocomplete="off" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-icon matPrefix class="icon">visibility</mat-icon>
+          <input
+            matInput
+            placeholder="รหัสผ่าน"
+            type="password"
+            autocomplete="new-password"
+          />
+        </mat-form-field>
+
+        <div class="btt">
+          <button mat-raised-button color="primary" class="btn-login">
+            เข้าสู่ระบบ
+          </button>
+          <button
+            mat-button
+            color="primary"
+            class="btn-register"
+            routerLink="/Register"
+          >
+            สมัครสมาชิก
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

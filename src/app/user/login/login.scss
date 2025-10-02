@@ -1,0 +1,64 @@
+/* ใช้ :host เพื่ออ้างถึง component ปัจจุบัน */
+:host {
+  // ... (โค้ดส่วนอื่นของคุณเหมือนเดิม) ...
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+    padding: 20px;
+  }
+
+  .GameShop {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3rem;
+    color: #ff3d00;
+    margin-bottom: 100px;
+  }
+
+  .custom-card {
+    max-width: 450px;
+    width: 100%;
+    border-radius: 15px !important;
+    padding: 20px;
+  }
+
+  .login-title {
+    color: #ff3d00;
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+  }
+  .w-100 {
+    width: 100%;
+  }
+  .icon{
+    color: #ff0000;
+  }
+}
+
+/* --- แก้ไขสไตล์ปุ่มตรงนี้ --- */
+::ng-deep .btn-login {
+  width: 100%;
+  padding: 22px 0 !important;
+  font-size: 1rem !important;
+  margin-bottom: 10px !important;
+
+  /* กำหนดสีพื้นหลังและสีตัวอักษรเอง */
+  background-color: #02ce0d !important; /* สีเขียว */
+  color: white !important;
+}
+
+::ng-deep .btn-register {
+  width: 100%;
+  padding: 22px 0 !important;
+  font-size: 1rem !important;
+ background-color: #008cff !important; /* สีเขียว */
+  /* กำหนดสีตัวอักษรให้เป็นสีแดง */
+  color: #ffffff !important;
+}
