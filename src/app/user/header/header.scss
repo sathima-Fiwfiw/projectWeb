@@ -1,0 +1,43 @@
+/* ทำให้ container กินพื้นที่เต็มหน้าจอ */
+.sidenav-container {
+  height: 100vh;
+}
+
+/* กำหนดความกว้างของ Sidenav */
+.sidenav {
+  width: 250px;
+}
+
+/* สไตล์หัวข้อใน Sidebar */
+.sidebar-header {
+  padding: 16px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #e50914; /* สีแดงเหมือนโลโก้ */
+  background: #f5f5f5;
+}
+
+/* ตัวถ่างให้ item ใน toolbar แยกจากกัน */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* จัดสไตล์ให้ช่องค้นหา */
+.search-form-field {
+  width: 40%; /* ปรับความกว้างได้ตามต้องการ */
+  height: 40px; /* ปรับความสูงของช่องค้นหา */
+  margin: 0 16px; /* ระยะห่างซ้ายขวา */
+  vertical-align: middle; /* จัดให้อยู่กลางแนวตั้ง */
+}
+
+/* ปรับสีพื้นหลังของ Toolbar เป็นสีเทาอ่อน */
+mat-toolbar {
+  background: #f0f2f5;
+  color: #333;
+}
+.GameShop {
+  color: #e50914; /* สีแดงเหมือนโลโก้ */
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+

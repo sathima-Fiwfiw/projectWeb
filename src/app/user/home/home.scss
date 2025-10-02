@@ -1,0 +1,38 @@
+.game-card {
+  max-width: 300px; /* กำหนดความกว้างสูงสุดของการ์ด */
+  margin: 20px;
+  font-family: 'Kanit', sans-serif; /* แนะนำให้ใช้ Font ที่รองรับภาษาไทย */
+  border-radius: 8px; /* ทำให้ขอบมน */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* เพิ่มเงาให้ดูมีมิติ */
+}
+
+mat-card-header {
+  padding-bottom: 0;
+}
+
+mat-card-title {
+  font-size: 1.5em; /* ปรับขนาดตัวอักษรของชื่อเกม */
+  font-weight: bold;
+}
+
+mat-card-content p {
+  margin: 8px 0; /* เพิ่มระยะห่างระหว่างบรรทัด */
+  color: #333;
+}
+
+mat-card-content .description {
+  color: #666; /* ทำให้สีข้อความคำอธิบายจางลงเล็กน้อย */
+  margin-top: 16px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center; /* จัดให้ปุ่มอยู่ตรงกลาง */
+  padding: 16px;
+}
+
+.details-button {
+  width: 100%; /* ทำให้ปุ่มเต็มความกว้าง */
+  background-color: #ff4655; /* สีแดงสดเหมือนในตัวอย่าง */
+  color: white;
+}
