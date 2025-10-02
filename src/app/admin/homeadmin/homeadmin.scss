@@ -1,0 +1,210 @@
+/* --- โครงสร้าง Layout หลัก --- */
+.main-layout-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f0f2f5; /* สีพื้นหลังส่วน Content */
+}
+
+/* --- Sidebar (เมนูซ้าย) --- */
+.sidebar {
+  width: 250px;
+  background-color: #ffffff;
+  padding: 20px 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff0000; /* สีแดงสำหรับ GameShop */
+  padding: 0 20px 30px 20px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  display: block;
+  padding: 12px 25px;
+  color: #333;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+  background-color: #f0f0f0;
+}
+
+.menu-item.active {
+  background-color: #e6e6e6;
+  font-weight: 700;
+}
+
+/* --- Content Area (ส่วนแสดงผลหลัก) --- */
+.content-area {
+  flex-grow: 1;
+  padding: 0 40px 40px 40px; /* เว้นด้านซ้ายและขวา */
+  overflow-y: auto; /* ให้ scroll ได้เฉพาะส่วน Content */
+}
+
+/* --- Header Bar (Admin Text) --- */
+.header-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.admin-link {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ff0000; /* สีแดงสำหรับ Admin */
+}
+
+/* --- Controls Section (Search & Add Button) --- */
+.controls-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 8px 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 500px; /* ความกว้างตามภาพ */
+}
+
+.search-bar svg {
+  color: #999;
+  margin-right: 10px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  flex-grow: 1;
+}
+
+.add-game-btn {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #007bff; /* สีน้ำเงินตามภาพ */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.add-game-btn svg {
+  margin-right: 8px;
+}
+
+/* --- Game List Grid --- */
+.game-list-grid {
+  display: grid;
+  /* สร้าง 3 คอลัมน์ที่ขนาดเท่ากัน */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 30px; /* ระยะห่างระหว่างการ์ด */
+}
+
+/* --- Game Card --- */
+.game-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.game-image-container {
+  overflow: hidden;
+  /* สัดส่วนภาพด้านบนให้เป็นส่วนเดียว */
+  height: 200px; 
+}
+
+.game-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-info {
+  padding: 15px;
+}
+
+.game-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.game-price,
+.game-category,
+.game-desc {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.game-desc {
+  /* ทำให้อักษรตัวเล็กกว่าและสีอ่อนกว่า */
+  font-size: 0.8rem;
+  color: #999; 
+  margin-bottom: 15px;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.action-btn {
+  height: 30px;
+  border: none;
+  padding: 0 10px;
+  border-radius: 4px;
+  margin-right: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.action-detail {
+  background-color: #dc3545; /* สีแดงตามภาพ */
+  color: white;
+  font-weight: 600;
+  flex-grow: 1; /* ให้ปุ่มรายละเอียดขยายเต็มพื้นที่ */
+}
+
+.action-edit {
+  background-color: #007bff; /* สีน้ำเงิน */
+  color: white;
+  width: 30px; 
+}
+
+.action-delete {
+  background-color: #dc3545; /* สีแดง */
+  color: white;
+  width: 30px;
+}

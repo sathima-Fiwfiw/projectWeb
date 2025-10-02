@@ -7,6 +7,7 @@ import { Wallet } from './user/wallet/wallet';
 import { Detail } from './user/detail/detail';
 import { Cart } from './user/cart/cart';
 import { Profileuser } from './user/profileuser/profileuser';
+import { Homeadmin } from './admin/homeadmin/homeadmin';
 
 export const routes: Routes = [
   // { path: '', component: Login },
@@ -17,4 +18,5 @@ export const routes: Routes = [
   { path: 'detail', component: Detail },
   { path: 'cart', component: Cart },
   { path: 'profileuser', component: Profileuser },
+  { path: 'homeadmin', component: Homeadmin },
 ];
