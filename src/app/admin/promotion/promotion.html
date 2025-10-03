@@ -1,0 +1,39 @@
+<div class="promotion-container">
+  <div class="header">
+    <button mat-flat-button color="primary" (click)="addPromotion()">เพิ่มโปรโมชัน</button>
+    <h1>โปรโมชัน</h1>
+  </div>
+
+  <div class="table-wrapper mat-elevation-z2">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> โปรโมชัน </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="discount">
+        <th mat-header-cell *matHeaderCellDef> ราคาที่ลด/บาท </th>
+        <td mat-cell *matCellDef="let element"> {{element.discount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="period">
+        <th mat-header-cell *matHeaderCellDef> ระยะเวลา </th>
+        <td mat-cell *matCellDef="let element"> {{element.period}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> จำนวน </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="used">
+        <th mat-header-cell *matHeaderCellDef> ใช้ไปแล้ว </th>
+        <td mat-cell *matCellDef="let element"> {{element.used}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

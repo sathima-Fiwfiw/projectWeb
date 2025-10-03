@@ -12,6 +12,10 @@ import { Rpg } from './user/rpg/rpg';
 import { Fps } from './user/fps/fps';
 import { Horror } from './user/horror/horror';
 import { Reting } from './user/reting/reting';
+import { Record } from './admin/record/record';
+import { Promotion } from './admin/promotion/promotion';
+
+
 
 export const routes: Routes = [
   // { path: '', component: Login },
@@ -27,4 +31,7 @@ export const routes: Routes = [
   { path: 'FPS', component: Fps },
   { path: 'Horror', component: Horror },
   { path: 'Reting', component: Reting },
+  { path: 'Record', component: Record },
+  { path: 'Promotion', component: Promotion },
+
 ];
