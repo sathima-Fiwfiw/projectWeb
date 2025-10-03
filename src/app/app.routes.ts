@@ -12,6 +12,8 @@ import { Rpg } from './user/rpg/rpg';
 import { Fps } from './user/fps/fps';
 import { Horror } from './user/horror/horror';
 import { Reting } from './user/reting/reting';
+import { Create } from './admin/create/create';
+import { Homeadmin } from './admin/homeadmin/homeadmin';
 
 export const routes: Routes = [
   // { path: '', component: Login },
@@ -27,4 +29,6 @@ export const routes: Routes = [
   { path: 'FPS', component: Fps },
   { path: 'Horror', component: Horror },
   { path: 'Reting', component: Reting },
+  { path: 'create', component: Create },
+  { path: 'homeadmin', component: Homeadmin },
 ];
