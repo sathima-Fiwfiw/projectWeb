@@ -15,13 +15,14 @@ import { Reting } from './user/reting/reting';
 import { Record } from './admin/record/record';
 import { Promotion } from './admin/promotion/promotion';
 import { Buildpomotion } from './admin/buildpomotion/buildpomotion';
+import { RetingAdmin } from './admin/reting-admin/reting-admin';
 
 
 
 export const routes: Routes = [
   // { path: '', component: Login },
   { path: 'Register', component: Register },
-  // { path: '', component: Home },
+  { path: '', component: Home },
   { path: 'Header', component: Header },
   { path: 'Wallet', component: Wallet },
   { path: 'Detail', component: Detail },
@@ -34,6 +35,8 @@ export const routes: Routes = [
   { path: 'Reting', component: Reting },
   { path: 'Record', component: Record },
   { path: 'Promotion', component: Promotion },
-  { path: '', component: Buildpomotion },
+  { path: 'Buildpomotion', component: Buildpomotion },
+  { path: 'RetingAdmin', component: RetingAdmin },
+
 
 ];

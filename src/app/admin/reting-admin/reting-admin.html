@@ -1,0 +1,30 @@
+
+
+<div class="page-content">
+  <h1>10 อันดับ</h1>
+
+  <div class="game-grid">
+    <mat-card class="game-card" *ngFor="let game of games">
+      <img
+        class="img-card"
+        mat-card-image
+        [src]="game.imageUrl"
+        [alt]="game.name + ' poster'"
+      />
+
+      <mat-card-header>
+        <mat-card-title>{{ game.name }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p><strong>ราคา :</strong> {{ game.price | number }} บาท</p>
+        <p><strong>ประเภท :</strong> {{ game.category }}</p>
+        <p class="description">{{ game.description }}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button class="details-button">รายละเอียด</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
