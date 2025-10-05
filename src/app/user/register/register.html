@@ -1,45 +1,61 @@
 <div class="signup-container">
-
-<button mat-button class="btn-back" (click)="goBack()">
-  <mat-icon>arrow_back</mat-icon> กลับ
-</button>
+  <button mat-button class="btn-back" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon> กลับ
+  </button>
 
   <div class="app-title">GameShop</div>
 
   <mat-card class="signup-card">
     <h2 class="card-title">สมัครสมาชิก</h2>
 
+    <!-- วงกลมพรีวิวรูป -->
     <div class="avatar-container">
-      <div class="avatar"></div>
-      <button mat-mini-fab color="warn" class="btn-add-avatar">
+      <div
+        class="avatar"
+        [style.background-image]="avatarPreview ? 'url(' + avatarPreview + ')' : null"
+        [class.has-image]="!!avatarPreview"
+        (click)="fileInput.click()"
+      ></div>
+
+      <button mat-mini-fab color="warn" class="btn-add-avatar"
+              (click)="fileInput.click(); $event.stopPropagation()">
         <mat-icon>add</mat-icon>
       </button>
+
+      <input #fileInput type="file" accept="image/*" hidden (change)="onFilePicked($event)">
     </div>
 
-    <form class="signup-form">
-
+    <form class="signup-form" [formGroup]="form" (ngSubmit)="submit()">
       <mat-form-field appearance="outline" class="full-width">
         <mat-icon class="icon" matPrefix>person</mat-icon>
-        <input matInput placeholder="ชื่อผู้ใช้" autocomplete="off">
+        <input matInput placeholder="ชื่อผู้ใช้" autocomplete="off" formControlName="username">
+        <mat-error *ngIf="form.get('username')?.hasError('required')">กรอกชื่อผู้ใช้</mat-error>
+        <mat-error *ngIf="form.get('username')?.hasError('minlength')">อย่างน้อย 3 ตัวอักษร</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
         <mat-icon class="icon" matPrefix>mail</mat-icon>
-        <input matInput placeholder="อีเมล" autocomplete="off">
+        <input matInput placeholder="อีเมล" autocomplete="off" formControlName="email">
+        <mat-error *ngIf="form.get('email')?.hasError('required')">กรอกอีเมล</mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">รูปแบบอีเมลไม่ถูกต้อง</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
         <mat-icon class="icon" matPrefix>visibility</mat-icon>
-        <input matInput type="password" placeholder="รหัสผ่าน" autocomplete="new-password">
+        <input matInput type="password" placeholder="รหัสผ่าน" autocomplete="new-password" formControlName="password">
+        <mat-error *ngIf="form.get('password')?.hasError('required')">กรอกรหัสผ่าน</mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">อย่างน้อย 6 ตัวอักษร</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
         <mat-icon class="icon" matPrefix>visibility</mat-icon>
-        <input matInput type="password" placeholder="ยืนยันรหัสผ่าน" autocomplete="new-password">
+        <input matInput type="password" placeholder="ยืนยันรหัสผ่าน" autocomplete="new-password" formControlName="confirm">
       </mat-form-field>
 
-      <button mat-raised-button color="primary" class="btn-submit">สมัครสมาชิก</button>
-
+      <button mat-raised-button color="primary" class="btn-submit" type="submit"
+              [disabled]="form.invalid || loading">
+        {{ loading ? 'กำลังสมัคร...' : 'สมัครสมาชิก' }}
+      </button>
     </form>
   </mat-card>
 </div>

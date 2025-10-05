@@ -1,35 +1,25 @@
-<div class="main">
+<div class="main" [formGroup]="form">
   <div class="GameShop">GameShop</div>
 
   <mat-card class="custom-card">
     <mat-card-title class="login-title">เข้าสู่ระบบ</mat-card-title>
     <mat-card-content>
-      <form>
+      <form (ngSubmit)="login()">
         <mat-form-field appearance="outline" class="w-100">
           <mat-icon matPrefix class="icon">mail</mat-icon>
-          <input matInput placeholder="อีเมล" type="email" autocomplete="off" />
+          <input matInput placeholder="อีเมล" type="email" formControlName="email" autocomplete="off" />
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="w-100">
           <mat-icon matPrefix class="icon">visibility</mat-icon>
-          <input
-            matInput
-            placeholder="รหัสผ่าน"
-            type="password"
-            autocomplete="new-password"
-          />
+          <input matInput placeholder="รหัสผ่าน" type="password" formControlName="password" autocomplete="new-password" />
         </mat-form-field>
 
         <div class="btt">
-          <button mat-raised-button color="primary" class="btn-login">
+          <button mat-raised-button color="primary" class="btn-login" type="submit">
             เข้าสู่ระบบ
           </button>
-          <button
-            mat-button
-            color="primary"
-            class="btn-register"
-            routerLink="/Register"
-          >
+          <button mat-button color="primary" class="btn-register" routerLink="/register">
             สมัครสมาชิก
           </button>
         </div>

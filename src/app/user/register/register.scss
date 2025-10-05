@@ -58,30 +58,49 @@ body {
   margin-bottom: 25px;
 }
 
-/* --- Avatar Section --- */
+/* วงกลมเดิม (ใช้เป็นที่พรีวิวรูปด้วย) */
+.avatar {
+  /* ขนาด/ทรงเดิมของคุณให้คงไว้ — ใส่ค่าให้ครบเพื่อชัวร์ */
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+
+  /* สไตล์ placeholder เดิม */
+  background: #f3f4f6;
+  border: 3px dashed #ff3b30;
+
+  /* สำคัญสำหรับพรีวิว */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  box-shadow: 0 4px 14px rgba(0,0,0,.12);
+  cursor: pointer;
+}
+
+/* เมื่อมีรูปแล้ว ให้กรอบดูเนียนขึ้น (ยังคงขนาด/ตำแหน่งเดิมทุกอย่าง) */
+.avatar.has-image {
+  border-style: solid;
+  border-color: #f71a1a;
+}
+
+/* ปุ่ม + วางมุมล่างขวา (ตามที่คุณมีอยู่) */
+.btn-add-avatar {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  z-index: 2;
+  background-color: #ff3d00 !important;
+  color: white !important;
+}
+
+/* กล่องวางรูป (ตำแหน่งเท่าเดิม) */
 .avatar-container {
   position: relative;
-  margin-bottom: 30px;
-}
-.avatar {
-  width: 120px;
-  height: 120px;
-  background-color: #9b9b9b;
-  border-radius: 50%;
+  width: 140px;
+  margin: 8px auto 16px;
 }
 
-.btn-add-avatar {
-  position: absolute !important;
-  bottom: 5px;
-  right: -2px;
-  background-color: #ff0000 !important;
-  border-radius: 50%;
-}
-
-
-.btn-add-avatar mat-icon {
-  color: white;
-}
 
 
 /* --- Form & Input Fields --- */

@@ -16,27 +16,31 @@ import { Record } from './admin/record/record';
 import { Promotion } from './admin/promotion/promotion';
 import { Buildpomotion } from './admin/buildpomotion/buildpomotion';
 import { RetingAdmin } from './admin/reting-admin/reting-admin';
+import { DetailAdmin } from './admin/detail-admin/detail-admin';
+import { Homeadmin } from './admin/homeadmin/homeadmin';
 
 
 
 export const routes: Routes = [
-  // { path: '', component: Login },
-  { path: 'Register', component: Register },
-  { path: '', component: Home },
-  { path: 'Header', component: Header },
-  { path: 'Wallet', component: Wallet },
-  { path: 'Detail', component: Detail },
-  { path: 'Cart', component: Cart },
-  { path: 'Profileuser', component: Profileuser },
-  { path: 'Action', component: Action },
+  { path: '', component: Login },
+  { path: 'register', component: Register },
+  { path: 'home', component: Home },
+  { path: 'header', component: Header },
+  { path: 'wallet', component: Wallet },
+  { path: 'detail', component: Detail },
+  { path: 'cart', component: Cart },
+  { path: 'profileuser', component: Profileuser },
+  { path: 'action', component: Action },
   { path: 'RPG', component: Rpg },
   { path: 'FPS', component: Fps },
-  { path: 'Horror', component: Horror },
-  { path: 'Reting', component: Reting },
-  { path: 'Record', component: Record },
-  { path: 'Promotion', component: Promotion },
-  { path: 'Buildpomotion', component: Buildpomotion },
-  { path: 'RetingAdmin', component: RetingAdmin },
+  { path: 'horror', component: Horror },
+  { path: 'reting', component: Reting },
+  { path: 'record', component: Record },
+  { path: 'promotion', component: Promotion },
+  { path: 'buildpomotion', component: Buildpomotion },
+  { path: 'retingAdmin', component: RetingAdmin },
+  { path: 'detailAdmin', component: DetailAdmin },
+  { path: 'homeAdmin', component: Homeadmin },
 
 
 ];
