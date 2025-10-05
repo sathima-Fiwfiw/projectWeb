@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,11 +20,16 @@ const API = 'http://localhost:8080/api'; // เปลี่ยนได้ถ้
   selector: 'app-register',
   standalone: true,
   imports: [
-    MatButtonModule, MatCardModule, MatIconModule, MatFormFieldModule, MatInputModule,
-    ReactiveFormsModule, HttpClientModule
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   templateUrl: './register.html',
-  styleUrl: './register.scss'
+  styleUrl: './register.scss',
 })
 export class Register {
   form: FormGroup;
@@ -39,11 +49,13 @@ export class Register {
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirm: ['', [Validators.required]]
+      confirm: ['', [Validators.required]],
     });
   }
 
-  goBack() { this.location.back(); }
+  goBack() {
+    this.location.back();
+  }
 
   onFilePicked(ev: Event) {
     const input = ev.target as HTMLInputElement;
@@ -52,7 +64,7 @@ export class Register {
     this.avatarFile = input.files[0];
 
     const reader = new FileReader();
-    reader.onload = () => this.avatarPreview = reader.result as string;
+    reader.onload = () => (this.avatarPreview = reader.result as string);
     reader.readAsDataURL(this.avatarFile);
   }
 
@@ -76,15 +88,19 @@ export class Register {
     fd.append('password', this.form.value.password);
     if (this.avatarFile) fd.append('avatar', this.avatarFile);
 
-    this.http.post(`${API}/register`, fd).subscribe({
-      next: () => {
-        alert('สมัครสำเร็จ! โปรดล็อคอิน');
-        this.router.navigate(['/']);
-      },
-      error: (e) => {
-        const msg = e?.error?.message || e?.error || e.message || 'ไม่ทราบสาเหตุ';
-        alert('สมัครไม่สำเร็จ: ' + msg);
-      }
-    }).add(() => this.loading = false);
+    this.http
+      .post(`${API}/register`, fd)
+      .subscribe({
+        next: () => {
+          alert('สมัครสำเร็จ! โปรดล็อคอิน');
+          this.router.navigate(['/']);
+        },
+        error: (e) => {
+          const msg =
+            e?.error?.message || e?.error || e.message || 'ไม่ทราบสาเหตุ';
+          alert('สมัครไม่สำเร็จ: ' + msg);
+        },
+      })
+      .add(() => (this.loading = false));
   }
 }

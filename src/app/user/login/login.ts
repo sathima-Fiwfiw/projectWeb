@@ -1,6 +1,11 @@
 // src/app/auth/login.ts
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,7 +19,6 @@ const API = 'http://localhost:8080/api';
 
 /**
  * Interface สำหรับโครงสร้างข้อมูลที่ได้รับจาก API หลังการล็อกอินสำเร็จ
- * โดยมีการเพิ่ม 'role' เข้ามา
  */
 interface AuthResponse {
   token: string;
@@ -25,50 +29,65 @@ interface AuthResponse {
   selector: 'app-login',
   standalone: true,
   imports: [
-    ReactiveFormsModule, HttpClientModule, RouterModule,
-    MatCardModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   templateUrl: './login.html',
-  styleUrl: './login.scss'
+  styleUrl: './login.scss',
 })
 export class Login {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required]],
     });
   }
 
   login() {
-    if (this.form.invalid) return;
+    console.log('1. Login function called.'); // <--- DEBUG POINT 1
+
+    if (this.form.invalid) {
+      console.warn(
+        '2. Form is INVALID! Stopping submission. Check input values.'
+      ); // <--- DEBUG POINT 2
+      // การทำงานจะถูกหยุดตรงนี้ ถ้าอีเมลว่าง, รหัสผ่านว่าง, หรืออีเมลรูปแบบไม่ถูกต้อง
+      return;
+    }
+
+    console.log('3. Form is VALID. Sending API request...'); // <--- DEBUG POINT 3
 
     // เรียกใช้ API /login และกำหนด Type ของ Response เป็น AuthResponse
-    this.http.post<AuthResponse>(`${API}/login`, this.form.value)
-      .subscribe({
-        next: (res) => {
-          // เก็บ JWT Token ไว้ใน Local Storage
-          localStorage.setItem('token', res.token);
+    this.http.post<AuthResponse>(`${API}/login`, this.form.value).subscribe({
+      next: (res) => {
+        console.log('4. API Success! Response:', res); // <--- DEBUG POINT 4
+        // เก็บ JWT Token ไว้ใน Local Storage
+        localStorage.setItem('token', res.token);
 
-          // ตรวจสอบบทบาท (role) เพื่อนำทางไปยังหน้าต่าง ๆ
-          if (res.role === 'admin') {
-            // ถ้าระบบส่ง role: 'admin' กลับมา ให้นำทางไปหน้า AdminHome
-            this.router.navigate(['/HomeAdmin']);
-          } else {
-            // ถ้าเป็น role อื่น (เช่น 'user') ให้นำทางไปหน้า Home ทั่วไป
-            this.router.navigate(['/Home']);
-          }
-        },
-        error: (e) => {
-          // ใช้ console.error แทน alert() เพื่อการ Debug ที่ดีกว่า
-          console.error('Login Failed:', e);
-
-          // แสดงข้อความแจ้งเตือนแก่ผู้ใช้ในรูปแบบที่สวยงามกว่า alert
-          // (ในสถานการณ์จริง ควรใช้ MatSnackBar หรือ Modal)
-          // เนื่องจากไม่มี MatSnackBar/Modal ในโค้ดตัวอย่าง จึงใช้ alert ชั่วคราว
-          alert('ล็อกอินไม่สำเร็จ: โปรดตรวจสอบอีเมลและรหัสผ่าน');
+        // ตรวจสอบบทบาท (role) เพื่อนำทางไปยังหน้าต่าง ๆ
+        if (res.role === 'admin') {
+          console.log('5. Navigating to /homeAdmin');
+          this.router.navigate(['/homeAdmin']);
+        } else {
+          console.log('5. Navigating to /home');
+          this.router.navigate(['/home']);
         }
-      });
+      },
+      error: (e) => {
+        console.error('6. Login Failed (API or Network Error):', e); // <--- DEBUG POINT 6
+        alert('ล็อกอินไม่สำเร็จ: โปรดตรวจสอบอีเมลและรหัสผ่าน');
+      },
+    });
   }
 }
