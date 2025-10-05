@@ -1,6 +1,6 @@
 // src/app/auth/register/register.ts
 import { Component } from '@angular/core';
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import {
   FormBuilder,
   FormGroup,
@@ -28,6 +28,7 @@ import { API_BASE } from '../../config/config';
     MatInputModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CommonModule,
   ],
   templateUrl: './register.html',
   styleUrls: ['./register.scss'],
@@ -86,15 +87,19 @@ export class Register {
     fd.append('password', String(this.form.value.password ?? ''));
     if (this.avatarFile) fd.append('avatar', this.avatarFile);
 
-    this.http.post(`${API_BASE}/register`, fd).subscribe({
-      next: () => {
-        alert('สมัครสำเร็จ! โปรดล็อคอิน');
-        this.router.navigate(['/']); // ไปหน้า login (root) ของคุณ
-      },
-      error: (e) => {
-        const msg = e?.error?.message || e?.error || e.message || 'ไม่ทราบสาเหตุ';
-        alert('สมัครไม่สำเร็จ: ' + msg);
-      },
-    }).add(() => (this.loading = false));
+    this.http
+      .post(`${API_BASE}/register`, fd)
+      .subscribe({
+        next: () => {
+          alert('สมัครสำเร็จ! โปรดล็อคอิน');
+          this.router.navigate(['/']); // ไปหน้า login (root) ของคุณ
+        },
+        error: (e) => {
+          const msg =
+            e?.error?.message || e?.error || e.message || 'ไม่ทราบสาเหตุ';
+          alert('สมัครไม่สำเร็จ: ' + msg);
+        },
+      })
+      .add(() => (this.loading = false));
   }
 }

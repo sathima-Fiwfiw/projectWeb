@@ -45,6 +45,11 @@
             [disabled]="!isEditing"
             class="data-input"
             autocomplete="new-password"
+            placeholder="{{
+              !isEditing
+                ? 'รหัสผ่านจะถูกซ่อนไว้'
+                : 'กรอกใหม่เพื่อเปลี่ยนรหัสผ่าน'
+            }}"
           />
         </div>
       </div>
