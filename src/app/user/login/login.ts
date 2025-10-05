@@ -14,15 +14,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-// URL API Backend (Go)
-const API = 'http://localhost:8080/api';
+import { API_BASE } from '../../config/config';
 
-/**
- * Interface สำหรับโครงสร้างข้อมูลที่ได้รับจาก API หลังการล็อกอินสำเร็จ
- */
 interface AuthResponse {
   token: string;
-  role: string; // บทบาทของผู้ใช้ ('admin' หรือ 'user')
+  role: 'admin' | 'user';
 }
 
 @Component({
@@ -39,7 +35,7 @@ interface AuthResponse {
     MatButtonModule,
   ],
   templateUrl: './login.html',
-  styleUrl: './login.scss',
+  styleUrls: ['./login.scss'],
 })
 export class Login {
   form: FormGroup;
@@ -56,36 +52,23 @@ export class Login {
   }
 
   login() {
-    console.log('1. Login function called.'); // <--- DEBUG POINT 1
-
     if (this.form.invalid) {
-      console.warn(
-        '2. Form is INVALID! Stopping submission. Check input values.'
-      ); // <--- DEBUG POINT 2
-      // การทำงานจะถูกหยุดตรงนี้ ถ้าอีเมลว่าง, รหัสผ่านว่าง, หรืออีเมลรูปแบบไม่ถูกต้อง
+      this.form.markAllAsTouched();
       return;
     }
 
-    console.log('3. Form is VALID. Sending API request...'); // <--- DEBUG POINT 3
-
-    // เรียกใช้ API /login และกำหนด Type ของ Response เป็น AuthResponse
-    this.http.post<AuthResponse>(`${API}/login`, this.form.value).subscribe({
+    this.http.post<AuthResponse>(`${API_BASE}/login`, this.form.value).subscribe({
       next: (res) => {
-        console.log('4. API Success! Response:', res); // <--- DEBUG POINT 4
-        // เก็บ JWT Token ไว้ใน Local Storage
         localStorage.setItem('token', res.token);
+        localStorage.setItem('role', res.role);
 
-        // ตรวจสอบบทบาท (role) เพื่อนำทางไปยังหน้าต่าง ๆ
         if (res.role === 'admin') {
-          console.log('5. Navigating to /homeAdmin');
           this.router.navigate(['/homeAdmin']);
         } else {
-          console.log('5. Navigating to /home');
           this.router.navigate(['/home']);
         }
       },
-      error: (e) => {
-        console.error('6. Login Failed (API or Network Error):', e); // <--- DEBUG POINT 6
+      error: () => {
         alert('ล็อกอินไม่สำเร็จ: โปรดตรวจสอบอีเมลและรหัสผ่าน');
       },
     });

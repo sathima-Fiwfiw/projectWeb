@@ -1,3 +1,4 @@
+// src/app/auth/register/register.ts
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import {
@@ -14,7 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-const API = 'http://localhost:8080/api'; // เปลี่ยนได้ถ้า backend อยู่ที่อื่น
+import { API_BASE } from '../../config/config';
 
 @Component({
   selector: 'app-register',
@@ -29,14 +30,12 @@ const API = 'http://localhost:8080/api'; // เปลี่ยนได้ถ้
     HttpClientModule,
   ],
   templateUrl: './register.html',
-  styleUrl: './register.scss',
+  styleUrls: ['./register.scss'],
 })
 export class Register {
   form: FormGroup;
   avatarFile?: File;
   avatarPreview: string | null = null;
-
-  // NEW: สถานะกันกดซ้ำ
   loading = false;
 
   constructor(
@@ -69,7 +68,6 @@ export class Register {
   }
 
   submit() {
-    // NEW: แจ้งเตือนทันทีถ้าฟอร์มไม่ผ่าน
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       alert('กรอกข้อมูลให้ครบและถูกต้องก่อนนะ');
@@ -83,24 +81,20 @@ export class Register {
     this.loading = true;
 
     const fd = new FormData();
-    fd.append('username', this.form.value.username);
-    fd.append('email', this.form.value.email);
-    fd.append('password', this.form.value.password);
+    fd.append('username', String(this.form.value.username ?? ''));
+    fd.append('email', String(this.form.value.email ?? ''));
+    fd.append('password', String(this.form.value.password ?? ''));
     if (this.avatarFile) fd.append('avatar', this.avatarFile);
 
-    this.http
-      .post(`${API}/register`, fd)
-      .subscribe({
-        next: () => {
-          alert('สมัครสำเร็จ! โปรดล็อคอิน');
-          this.router.navigate(['/']);
-        },
-        error: (e) => {
-          const msg =
-            e?.error?.message || e?.error || e.message || 'ไม่ทราบสาเหตุ';
-          alert('สมัครไม่สำเร็จ: ' + msg);
-        },
-      })
-      .add(() => (this.loading = false));
+    this.http.post(`${API_BASE}/register`, fd).subscribe({
+      next: () => {
+        alert('สมัครสำเร็จ! โปรดล็อคอิน');
+        this.router.navigate(['/']); // ไปหน้า login (root) ของคุณ
+      },
+      error: (e) => {
+        const msg = e?.error?.message || e?.error || e.message || 'ไม่ทราบสาเหตุ';
+        alert('สมัครไม่สำเร็จ: ' + msg);
+      },
+    }).add(() => (this.loading = false));
   }
 }

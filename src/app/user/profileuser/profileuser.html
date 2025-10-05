@@ -1,5 +1,6 @@
 <app-header></app-header>
-<div class="profile-page-container">
+
+<div class="profile-page-container" *ngIf="tempProfile">
   <div class="profile-box">
     <h3>ข้อมูลส่วนตัว</h3>
 
@@ -9,30 +10,11 @@
           [src]="userProfile.profileImageUrl"
           alt="Profile Picture"
           class="profile-image"
+          loading="lazy"
         />
       </div>
 
       <div class="profile-data-section">
-        <div class="data-row">
-          <span class="label">ชื่อ :</span>
-          <input
-            type="text"
-            [(ngModel)]="tempProfile.firstName"
-            [disabled]="!isEditing"
-            class="data-input"
-          />
-        </div>
-
-        <div class="data-row">
-          <span class="label">นามสกุล :</span>
-          <input
-            type="text"
-            [(ngModel)]="tempProfile.lastName"
-            [disabled]="!isEditing"
-            class="data-input"
-          />
-        </div>
-
         <div class="data-row">
           <span class="label">ชื่อผู้ใช้ :</span>
           <input
@@ -40,6 +22,7 @@
             [(ngModel)]="tempProfile.username"
             [disabled]="!isEditing"
             class="data-input"
+            autocomplete="username"
           />
         </div>
 
@@ -50,16 +33,18 @@
             [(ngModel)]="tempProfile.email"
             [disabled]="!isEditing"
             class="data-input"
+            autocomplete="email"
           />
         </div>
 
         <div class="data-row">
-          <span class="label">เบอร์โทรศัพท์ :</span>
+          <span class="label">รหัสผ่าน :</span>
           <input
-            type="text"
-            [(ngModel)]="tempProfile.phone"
+            type="password"
+            [(ngModel)]="tempProfile.password"
             [disabled]="!isEditing"
             class="data-input"
+            autocomplete="new-password"
           />
         </div>
       </div>
